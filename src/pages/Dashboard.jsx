@@ -1,21 +1,46 @@
-import React, { useState } from 'react';
-import { prData } from '../datas/PrData';
+import React, { useState, useEffect } from 'react';
 import UserCard from '../components/UserCard';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import RepoCard from '../components/RepoCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import repoData from '../datas/repoData';
+import axios from 'axios';
+// import loader from '../images/sapiens-loader.gif' 
 
 const Dashboard = ({ filter }) => {
+  const [repoData, setRepoData] = useState([]);
+  const [prData, setPrData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPullRequests = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get('http://localhost:8000/github/pullrequests');
+        const repoResponse = await axios.get('http://localhost:8000/github/repositories');
+        setRepoData(repoResponse.data);
+        setPrData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch pull requests:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchPullRequests();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
+
   const params = useParams();
   const location = useLocation();
-  console.log(params);
 
   const repoUsers = params.repoName ? prData.filter(item => item.repoName === params.repoName) : [];
   const userRepos = params.userName ? prData.filter(item => item.requesterName === params.userName) : [];
-
-  userRepos.length !== 0 && console.log(userRepos);
 
   const FilteredRepo = () => {
     return (
@@ -27,32 +52,41 @@ const Dashboard = ({ filter }) => {
               <UserCard
                 key={index}
                 type="pr"
-                img={pr.img}
+                img={'https://github.com/' + pr.requesterName + '.png'}
                 repoName={pr.repoName}
                 prId={pr.prId}
                 title={pr.title}
                 requesterName={pr.requesterName}
-                requestedTime={pr.requestedTime}
+                requestedTime={formatDate(pr.requestedTime)}
                 prStatus={pr.prStatus}
               />
             ))}
           </div>
-        ) : (
-          <h1>No user contributed to this repository</h1>
-        )}
+        ) : (isLoading == false) ? (
+            <div className='loading-animation'><h1>No user contributed to this repository</h1></div>
+        ) : null
+        }
       </>
     );
   };
 
   const AllRepos = () => {
-
     const [searchTerm, setSearchTerm] = useState('');
-
     const handleRepo = (e) => {
       setSearchTerm(e.target.value);
     };
 
-    const searchedRepos = repoData.filter(repo =>
+    // Aggregate PRs by repository name
+    const aggregatedRepos = repoData.reduce((acc, curr) => {
+      const repoExists = acc.find(repo => repo.repoName === curr.repoName);
+      if (!repoExists) {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+
+    // Filter aggregated repos based on the search term
+    const searchedRepos = aggregatedRepos.filter(repo =>
       repo.repoName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -63,20 +97,27 @@ const Dashboard = ({ filter }) => {
           <input type="text" placeholder='Search with repository name' id='repo' onChange={handleRepo} />
         </label>
         <div className="all-repos">
-          {searchedRepos.map((repo, index) => (
-            <RepoCard
+          {searchedRepos.map((repo, index) => {
+            const totalPR = prData.filter(pr => pr.repoName === repo.repoName).length;
+            const PrMerged = prData.filter(pr => pr.repoName === repo.repoName && pr.prStatus === 'Merged').length;
+            const PrPending = prData.filter(pr => pr.repoName === repo.repoName && pr.prStatus === 'Pending').length;
+            const repoNameForUrl = repo.repoName;
+            return <RepoCard
               key={index}
+              img={repo.url.replace('/' + repoNameForUrl, '.png')}
               repoName={repo.repoName}
               creatorName={repo.creatorName}
-              totalPR={repo.totalPR}
-              PrMerged={repo.PrMerged}
-              PrPending={repo.PrPending}
+              totalPR={totalPR}
+              PrMerged={PrMerged}
+              PrPending={PrPending}
+              url={repo.url}
             />
-          ))}
+          })}
         </div>
       </>
     );
   };
+
 
   const FilteredUser = () => {
     return (
@@ -88,36 +129,40 @@ const Dashboard = ({ filter }) => {
               <UserCard
                 key={index}
                 type="pr"
-                img={pr.img}
+                img={'https://github.com/' + pr.requesterName + '.png'}
                 repoName={pr.repoName}
                 prId={pr.prId}
                 title={pr.title}
                 requesterName={pr.requesterName}
-                requestedTime={pr.requestedTime}
+                requestedTime={formatDate(pr.requestedTime)}
                 prStatus={pr.prStatus}
+                url={pr.base_html_url + '/' + pr.repoName}
               />
             ))}
           </div>
         ) : (
-          <h1>No user contributed to this repository</h1>
+          null// <h1>This user haven't contributed to any repository</h1>
         )}
       </>
     );
   }
 
   const UserDets = () => {
-
     const [searchTerm, setSearchTerm] = useState('');
-
     const handleUser = (e) => {
       setSearchTerm(e.target.value);
     };
-
-    const searchedUsers = prData.filter(user =>
+    // Aggregate PRs by repository name
+    const aggregatedUsers = prData.reduce((acc, curr) => {
+      const repoExists = acc.find(repo => repo.requesterName === curr.requesterName);
+      if (!repoExists) {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+    const searchedUsers = aggregatedUsers.filter(user =>
       user.requesterName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-
 
     return (
       <>
@@ -127,22 +172,18 @@ const Dashboard = ({ filter }) => {
         </label>
         <div className="pull-reqs">
           {searchedUsers.map((pullReq, index) => {
-
             const totalReq = prData.filter(pr => pr.requesterName === pullReq.requesterName).length;
-
             const mergedReq = prData.filter(pr => pr.requesterName === pullReq.requesterName && pr.prStatus === 'Merged').length;
-
             const pendingReq = prData.filter(pr => pr.requesterName === pullReq.requesterName && pr.prStatus === 'Pending').length;
-
             return <UserCard
               key={index}
               type="user"
-              img={pullReq.img}
+              img={'https://github.com/' + pullReq.requesterName + '.png'}
               repoName={pullReq.repoName}
               prId={pullReq.prId}
               title={pullReq.title}
               requesterName={pullReq.requesterName}
-              requestedTime={pullReq.requestedTime}
+              requestedTime={formatDate(pullReq.requestedTime)}
               prStatus={pullReq.prStatus}
               totalPR={totalReq}
               prMerged={mergedReq}
@@ -167,8 +208,10 @@ const Dashboard = ({ filter }) => {
         </ul>
       </div>
 
+
       {filter === 'repo' && (params.repoName ? <FilteredRepo /> : <AllRepos />)}
       {filter === 'user' && (params.userName ? <FilteredUser /> : <UserDets />)}
+      <div className='loading-animation'> {isLoading && <div className='loader'></div>}</div>
     </>
   );
 };
