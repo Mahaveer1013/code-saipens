@@ -39,7 +39,6 @@ const Home = () => {
         <p> <FontAwesomeIcon icon={faArrowRight} /> Apart from the general internships, participating in Summer of Code actively adds value to students resume as they work on real time projects that are supervised by industry experts.</p>
         <p> <FontAwesomeIcon icon={faArrowRight} /> Students getting selected and participating are generally hired by the top companies as the competition is high.</p>
       </section>
-
     </div>
   )
 }
