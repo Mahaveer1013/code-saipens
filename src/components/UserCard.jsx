@@ -9,7 +9,7 @@ const UserCard = (props) => {
         <div className='user-card'>
             <div className="top">
                 <div className="left">
-                    <img src={props.img} alt={props.img} />
+                    <img src={props.img} alt='avatar' />
                 </div>
                 <div className="right">
                     <h3 className='name'>{props.requesterName}</h3>
@@ -27,10 +27,10 @@ const UserCard = (props) => {
                             }&nbsp;&nbsp;&nbsp;
                             {props.prStatus}
                         </div>
-                        <p>Pull req ID: {props.prId}</p>
-                        <p>Repo: {props.repoName}</p>
+                        <p>Repo Name: {props.repoName}</p>
+                        <p>PR ID: {props.prId}</p>
                         <p>Title:  {props.title}</p>
-                        <a href='https://github.com' className='view-btn'>View Details</a>
+                        <a href={props.url} className='view-btn'>View Details</a>
                     </>
                 }
                 {
