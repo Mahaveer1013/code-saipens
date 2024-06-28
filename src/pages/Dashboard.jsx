@@ -16,8 +16,8 @@ const Dashboard = ({ filter }) => {
     const fetchPullRequests = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get('http://localhost:8000/github/pullrequests');
-        const repoResponse = await axios.get('http://localhost:8000/github/repositories');
+        const response = await axios.get('https://omanhosting.online/github/pullrequests');
+        const repoResponse = await axios.get('https://omanhosting.online/github/repositories');
         setRepoData(repoResponse.data);
         setPrData(response.data);
         setIsLoading(false);
@@ -46,7 +46,7 @@ const Dashboard = ({ filter }) => {
     return (
       <>
         <h3 className='repo-title'>Repository : {params.repoName}</h3>
-        {params.repoName && repoUsers.length !=== 0 ? (
+        {params.repoName && repoUsers.length !== 0 ? (
           <div className="all-repos">
             {repoUsers.map((pr, index) => (
               <UserCard
@@ -62,7 +62,7 @@ const Dashboard = ({ filter }) => {
               />
             ))}
           </div>
-        ) : (isLoading == false) ? (
+        ) : (isLoading === false) ? (
             <div className='loading-animation'><h1>No user contributed to this repository</h1></div>
         ) : null
         }
