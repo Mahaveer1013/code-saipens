@@ -16,8 +16,8 @@ const Dashboard = ({ filter }) => {
     const fetchPullRequests = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get('http://localhost:8000/github/pullrequests');
-        const repoResponse = await axios.get('http://localhost:8000/github/repositories');
+        const response = await axios.get('https://omanhosting.online/github/pullrequests');
+        const repoResponse = await axios.get('https://omanhosting.online/github/repositories');
         setRepoData(repoResponse.data);
         setPrData(response.data);
         setIsLoading(false);
@@ -62,8 +62,8 @@ const Dashboard = ({ filter }) => {
               />
             ))}
           </div>
-        ) : (isLoading == false) ? (
-            <div className='loading-animation'><h1>No user contributed to this repository</h1></div>
+        ) : (isLoading === false) ? (
+          <div className='loading-animation'><h1>No user contributed to this repository</h1></div>
         ) : null
         }
       </>
