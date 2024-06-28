@@ -46,7 +46,7 @@ const Dashboard = ({ filter }) => {
     return (
       <>
         <h3 className='repo-title'>Repository : {params.repoName}</h3>
-        {params.repoName && repoUsers.length !=== 0 ? (
+        {params.repoName && repoUsers.length !== 0 ? (
           <div className="all-repos">
             {repoUsers.map((pr, index) => (
               <UserCard
