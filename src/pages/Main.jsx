@@ -7,6 +7,7 @@ import '../css/style.css';
 import '../css/dashboard.css';
 import '../css/side-bar.css';
 import '../css/home.css';
+import '../css/contact-us.css';
 import Leaderboard from './Leaderboard';
 import ContactUs from './ContactUs';
 import Profile from './Profile';
