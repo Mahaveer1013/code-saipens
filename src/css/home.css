@@ -1,9 +1,9 @@
-.home{
+.home {
     display: flex;
     flex-direction: column;
 }
 
-.home .title{
+.home .title {
     width: 100%;
     text-align: center;
     font-size: 50px;
@@ -13,14 +13,14 @@
     letter-spacing: 1px;
 }
 
-.hero{
+.hero {
     display: flex;
     min-height: calc(100vh - 300px);
     height: auto;
     padding: 0 20px;
 }
 
-.hero .left{
+.hero .left {
     width: 50%;
     height: 100%;
     display: flex;
@@ -32,28 +32,28 @@
     padding-left: 30px;
 }
 
-.hero .left h1{
+.hero .left h1 {
     font-size: 40px;
     text-align: center;
 }
 
-.hero .left h3{
+.hero .left h3 {
     margin: 30px 0;
     text-align: center;
 }
 
-.hero .left p{
+.hero .left p {
     color: #10df10;
     margin-top: 15px;
     font-weight: 600;
 }
 
-.hero .links{
+.hero .links {
     display: flex;
     gap: 10px;
 }
 
-.hero .links a{
+.hero .links a {
     color: white;
     background-color: var(--l-bg);
     padding: 10px 25px;
@@ -61,59 +61,53 @@
     font-weight: 600;
 }
 
-.hero .links a:first-child{
+.hero .links a:first-child {
     color: black;
     background-color: white;
 }
 
-.hero .links a:hover{
+.hero .links a:hover {
     color: rgb(13, 194, 13);
 }
 
-.hero .right{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hero .right {
+    position: relative;
+    right: 1cm;
+    bottom: 2.3cm;
+    width: 100%;
 }
 
-.hero .right img{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.home section{
+.home section {
     margin: 30px 60px;
     padding: 20px;
     letter-spacing: 1px;
     border-radius: 10px;
 }
 
-.home section h1{
+.home section h1 {
     color: white;
     margin-bottom: 20px;
 }
 
-.home section p{
+.home section p {
     color: #ddd;
     margin-left: 20px;
     font-size: 18px;
 }
 
-.home .what-soc{
+.home .what-soc {
     display: flex;
     flex-direction: column;
     gap: 20px;
     background-color: #2b2a37c1;
 }
 
-.home .what-soc span.green{
+.home .what-soc span.green {
     color: #18c718;
 }
 
-.home .what-soc .quote{
+.home .what-soc .quote {
     width: 50%;
     align-self: center;
     padding: 20px;
@@ -122,12 +116,12 @@
     border-radius: 0 5px 5px 0;
 }
 
-.what-soc h1{
+.what-soc h1 {
     display: flex;
     align-items: center;
 }
 
-.what-soc h1 img{
+.what-soc h1 img {
     width: 50px;
     height: 50px;
     padding: 5px;
@@ -138,60 +132,73 @@
 
 
 @media all and (max-width:768px) {
-    .home .title p{
+    .home .title p {
         font-size: 40px;
         padding: 0 100px;
     }
-    .home .hero{
+
+    .home .hero {
         padding: 30px;
         margin-top: 20px;
     }
-    .hero .left h1{
+
+    .hero .left h1 {
         font-size: 30px;
     }
-    .hero .left p{
+
+    .hero .left p {
         text-align: center;
     }
 }
 
 @media all and (max-width:426px) {
-    .hero{
+    .hero {
         flex-direction: column-reverse;
     }
-    .hero .left, .hero .right{
+
+    .hero .left {
         width: 100%;
         gap: 0;
         padding-left: 0;
     }
-    .hero .right img{
-        width: 50%;
+
+    .hero .right {
+        display: none;
     }
-    .home .hero{
+
+    .home .hero {
         padding: 0 10px;
         margin-top: 0;
     }
-    .home .title p{
+
+    .home .title p {
         font-size: 28px;
         padding: 0 10px;
     }
-    .hero .left h1{
+
+    .hero .left h1 {
         font-size: 25px;
     }
-    .home section{
+
+    .home section {
         margin: 10px;
         padding: 10px;
     }
-    .home section h1{
+
+    .home section h1 {
         margin-bottom: 0;
     }
-    .home .what-soc{
+
+    .home .what-soc {
         margin-top: 30px;
     }
-    .home section p{
+
+    .home section p {
         font-size: 16px;
         margin-left: 5px;
     }
-    .home .what-soc .quote{
+
+    .home .what-soc .quote {
         width: 90%;
     }
 }
