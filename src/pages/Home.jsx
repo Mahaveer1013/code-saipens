@@ -4,13 +4,14 @@ import React from 'react'
 import poster from '../images/background-DHeaefIu.svg'
 // import logo from '../images/codesapiens.png'
 import { Link } from 'react-router-dom'
+import ComputersCanvas from '../components/canvas/Computers'
 
 const Home = ({ isAuth }) => {
   return (
     <div className='home'>
 
       <div className="title">
-        <p>Code Sapiens Summer Of Code</p>
+        <p>CodeSapiens Summer Of Code</p>
       </div>
 
       <div className="hero">
@@ -24,15 +25,15 @@ const Home = ({ isAuth }) => {
           <div className="links">
             {isAuth ?
               <Link to='/dashboard'>
-                <FontAwesomeIcon icon={faArrowRight} /> Go To Dashboard 
+                <FontAwesomeIcon icon={faArrowRight} /> Go To Dashboard
               </Link>
               : <Link to='/login'>
-                <FontAwesomeIcon icon={faArrowRight} /> Login 
+                <FontAwesomeIcon icon={faArrowRight} /> Login
               </Link>}
           </div>
         </div>
         <div className="right">
-          <img src={poster} alt={poster} />
+          <ComputersCanvas />
         </div>
       </div>
 
@@ -56,15 +57,15 @@ const Home = ({ isAuth }) => {
         <p> <FontAwesomeIcon icon={faArrowRight} /> In our latest effort to empower the student community in Tamil Nadu, we are hosting a beginner friendly summer of code with cash prize and other benefits.</p>
         <p> <FontAwesomeIcon icon={faArrowRight} /> Students can learn from our beginner friendly sessions and will benefit from networking with fellow peers.</p>
         <p className="quote">
-          A <span className="green">not for profit</span> initiative <span className="green">by</span> the students <span className="green">for</span> the students.<br/> To put it simply, CSSOC is an event where a senior helps junior but just done at a different larger scale that is loved by students and wanted by companies
+          A <span className="green">not for profit</span> initiative <span className="green">by</span> the students <span className="green">for</span> the students.<br /> To put it simply, CSSOC is an event where a senior helps junior but just done at a different larger scale that is loved by students and wanted by companies
         </p>
       </section>
 
       <section className="partners">
-              <h1>Our Partners</h1>
+        <h1>Our Partners</h1>
       </section>
 
-
+      
     </div>
   )
 }
