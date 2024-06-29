@@ -1,10 +1,10 @@
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faChartPie } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import poster from '../images/background-DHeaefIu.svg'
 import { Link } from 'react-router-dom'
 
-const Home = () => {
+const Home = ({ isAuth }) => {
   return (
     <div className='home'>
 
@@ -20,12 +20,13 @@ const Home = () => {
           <h3>From being clueless to becoming timeless<br />
             Become busy with open source</h3>
           <div className="links">
-            <Link to='/login'>
-              Login <FontAwesomeIcon icon={faArrowRight} />
-            </Link>
-            <Link to='/'>
-              Know More
-            </Link>
+            {isAuth ?
+              <Link to='/dashboard'>
+                Dashboard <FontAwesomeIcon icon={faChartPie} />
+              </Link>
+              : <Link to='/login'>
+                Login <FontAwesomeIcon icon={faArrowRight} />
+              </Link>}
           </div>
         </div>
         <div className="right">

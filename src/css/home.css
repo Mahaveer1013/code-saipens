@@ -9,7 +9,7 @@
     font-size: 50px;
     margin-top: 20px;
     font-weight: 700;
-    background: linear-gradient(45deg, #ffb84d, #f60, red, #f60, #ffb84d);
+    background: linear-gradient(45deg, #DAA520, #4682B4, #CD5C5C, #228B22, #778899);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -54,7 +54,7 @@
 }
 
 .hero .left h1:nth-child(2){
-    background: linear-gradient(45deg, #ffb84d, #f60, red, #f60, #ffb84d);
+    background: linear-gradient(45deg, #DAA520, #4682B4, #CD5C5C, #228B22, #778899);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
