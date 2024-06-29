@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import UserCard from '../components/UserCard';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import RepoCard from '../components/RepoCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
-// import loader from '../images/sapiens-loader.gif' 
+import { MyContext } from './Main';
 
 const Dashboard = ({ filter }) => {
-  const [repoData, setRepoData] = useState([]);
-  const [prData, setPrData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPullRequests = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get('https://omanhosting.online/github/pullrequests');
-        const repoResponse = await axios.get('https://omanhosting.online/github/repositories');
-        setRepoData(repoResponse.data);
-        setPrData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch pull requests:", error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchPullRequests();
-  }, []);
+  const {repoData,prData, isLoading} = useContext(MyContext)
+  console.log('defrt');
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
