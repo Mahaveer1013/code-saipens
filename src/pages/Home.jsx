@@ -1,8 +1,6 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import poster from '../images/background-DHeaefIu.svg'
-// import logo from '../images/codesapiens.png'
 import { Link } from 'react-router-dom'
 import ComputersCanvas from '../components/canvas/Computers'
 
