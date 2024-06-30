@@ -12,6 +12,7 @@ import '../css/contact-us.css';
 import Leaderboard from './Leaderboard';
 import ContactUs from './ContactUs';
 import Profile from './Profile';
+import Login from './Login';
 import Dashboard from './Dashboard';
 import Sidebar from '../components/Sidebar';
 import StarsCanvas from '../components/Stars';
@@ -25,7 +26,7 @@ const Main = () => {
 
   const [isAside, setIsAside] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [repoData, setRepoData] = useState([]);
   const [prData, setPrData] = useState([]);
 
@@ -82,6 +83,7 @@ const Main = () => {
             <Route path='/leaderboard' element={<RequireAuth><Leaderboard /></RequireAuth>} />
             <Route path='/profile/:userName' element={<RequireAuth><Profile /></RequireAuth>} />
             <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='/login' element={<Login />} />
             <Route path='*' element={<h1 style={{ width: '100%', height: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Sorry Sapiens, There's no content ahead🙌</h1>} />
           </Routes>
         </div>

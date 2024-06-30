@@ -8,6 +8,7 @@
     text-align: center;
     font-size: 50px;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: 700;
     color: #18c718;
     letter-spacing: 1px;
@@ -71,12 +72,12 @@
 }
 
 .hero .right {
-    position: relative;
-    right: 1cm;
-    bottom: 2.3cm;
-    width: 100%;
+    width: 50%;
 }
 
+.hero .right:nth-child(2){
+    margin-bottom: 10%;
+}
 
 .home section {
     margin: 30px 60px;
@@ -140,6 +141,11 @@
     .home .hero {
         padding: 30px;
         margin-top: 20px;
+        flex-direction: column-reverse;
+    }
+
+    .hero .left, .hero .right{
+        width: 100%;
     }
 
     .hero .left h1 {
@@ -162,9 +168,9 @@
         padding-left: 0;
     }
 
-    .hero .right {
+    /* .hero .right {
         display: none;
-    }
+    } */
 
     .home .hero {
         padding: 0 10px;
