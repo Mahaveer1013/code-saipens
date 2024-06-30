@@ -25,7 +25,7 @@ const Main = () => {
 
   const [isAside, setIsAside] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [repoData, setRepoData] = useState([]);
   const [prData, setPrData] = useState([]);
 
