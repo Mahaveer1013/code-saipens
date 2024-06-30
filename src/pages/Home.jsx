@@ -8,6 +8,7 @@ import GithubLogin from '../components/GithubLogin'
 import partner_1 from '../images/partner_1.png'
 import partner_2 from '../images/partner_2.png'
 import partner_3 from '../images/partner_3.png'
+import partner_4 from '../images/partner_4.png'
 import partner_5 from '../images/partner_5.jpg'
 import partner_6 from '../images/partner_6.png'
 import partner_7 from '../images/partner_7.png'
@@ -17,6 +18,7 @@ import example from '../images/team_eg.jpeg'
 const Home = ({ isAuth }) => {
 
   const partnersDivRef = useRef(null);
+  const teamsDivRef = useRef(null);
 
   const TeamImages = [
     example, example, example, example, example, example, example
@@ -34,6 +36,23 @@ const Home = ({ isAuth }) => {
   const scrollRight = () => {
     if (partnersDivRef.current) {
       partnersDivRef.current.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+  const teamScrollLeft = () => {
+    if (teamsDivRef.current) {
+      teamsDivRef.current.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const teamScrollRight = () => {
+    if (teamsDivRef.current) {
+      teamsDivRef.current.scrollBy({
         left: 300,
         behavior: 'smooth'
       });
@@ -165,10 +184,10 @@ const Home = ({ isAuth }) => {
       <section className="our-team">
         <h1>Our Team</h1>
         <div className="partners-container">
-          <div className="partner-left" onClick={scrollLeft}>
+          <div className="partner-left" onClick={teamScrollLeft}>
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
-          <div className="partners-div" ref={partnersDivRef}>
+          <div className="partners-div" ref={teamsDivRef}>
             {TeamImages.map((team, index) => (
               <div key={index} className="partner-slide">
                 <div className="partner-img">
@@ -180,7 +199,7 @@ const Home = ({ isAuth }) => {
               </div>
             ))}
           </div>
-          <div className="partner-right" onClick={scrollRight}>
+          <div className="partner-right" onClick={teamScrollRight}>
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
