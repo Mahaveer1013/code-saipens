@@ -1,7 +1,7 @@
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import EarthCanvas from '../components/canvas/Earth';
+import EarthCanvas from '../assets/canvas/Earth';
 
 export default function ContactUs() {
 

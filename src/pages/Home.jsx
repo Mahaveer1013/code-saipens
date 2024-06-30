@@ -33,14 +33,14 @@ const partners = [
 ];
 
 const TeamImages = [
-  { img: team_1, name: 'GDSC Rajalakshmi Engineering College' },
-  { img: team_2, name: 'AWS India' },
-  { img: team_3, name: 'Trio Devs' },
-  { img: team_4, name: 'GDSC Sai Ram Engineering College' },
-  { img: team_5, name: 'Chennai Geeks' },
-  { img: team_6, name: 'Flutter Chennai' },
-  { img: team_8, name: 'Chennai React' },
-  { img: team_7, name: 'Chennai React' },
+  { img: team_1, name: 'Athi Ram', role: 'Lead', college: 'RMK Engineering College' },
+  { img: team_2, name: 'Justin Benito', role: 'Lead', college: 'SSN College of Engineering' },
+  { img: team_3, name: 'Koushik Ram', role: 'Lead', college: 'Panimalar Engineering College' },
+  { img: team_4, name: 'Keerthana', role: 'Partners Outreach', college: 'Rajalakshmi Engineering College' },
+  { img: team_5, name: 'Subha', role: 'PR and Design Head', college: 'Panimalar Engineering College' },
+  { img: team_6, name: 'Bharathwaj', role: 'Development Lead', college: 'RMD Engineering College' },
+  { img: team_8, name: 'Priyanka', role: 'Development', college: 'RMKCET Engineering College' },
+  { img: team_7, name: 'Mahaveer A', role: 'Development', college: 'Panimalar Engineering College' },
 ];
 
 const Home = ({ isAuth }) => {
@@ -163,7 +163,9 @@ const Home = ({ isAuth }) => {
                   <img src={team.img} alt={team.name} />
                 </div>
                 <div className="partner-name">
-                  {team.name}
+                <p className='mem-name'>{team.name}</p>
+                  <p>{team.role}</p>
+                  <p>{team.college}</p>
                 </div>
               </div>
             ))}

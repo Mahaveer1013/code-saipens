@@ -225,6 +225,16 @@
     right: -30px;
 }
 
+.partner-name{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.partner-name .mem-name{
+    color: #10df10;
+}
+
 @media all and (max-width:768px) {
     .home .title p {
         font-size: 40px;
