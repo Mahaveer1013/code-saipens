@@ -8,6 +8,7 @@ aside{
     z-index: 3;
     background-color: var(--l-bg);
     transition: transform .5s ease;
+    overflow: hidden;
 }
 
 aside.open{

@@ -1,27 +1,51 @@
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
-import ComputersCanvas from '../components/canvas/Computers'
-import GithubLogin from '../components/GithubLogin'
-import partner_1 from '../images/partner_1.png'
-import partner_2 from '../images/partner_2.png'
-import partner_3 from '../images/partner_3.png'
-import partner_5 from '../images/partner_5.jpg'
-import partner_6 from '../images/partner_6.png'
-import partner_7 from '../images/partner_7.png'
-import example from '../images/team_eg.jpeg'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import ComputersCanvas from '../components/canvas/Computers';
+import GithubLogin from '../components/GithubLogin';
+import partner_1 from '../images/partner_1.png';
+import partner_2 from '../images/partner_2.png';
+import partner_3 from '../images/partner_3.png';
+import partner_5 from '../images/partner_5.jpg';
+import partner_6 from '../images/partner_6.png';
+import partner_7 from '../images/partner_7.png';
+import partner_8 from '../images/partner_8.jpg';
+import team_1 from '../images/team_1.png'
+import team_2 from '../images/team_2.jpg'
+import team_3 from '../images/team_3.jpg'
+import team_4 from '../images/team_4.jpg'
+import team_5 from '../images/team_5.png'
+import team_6 from '../images/team_6.jpg'
+import team_7 from '../images/team_7.jpg'
+import team_8 from '../images/team_8.jpg'
 
+const partners = [
+  { img: partner_1, name: 'GDSC Rajalakshmi Engineering College' },
+  { img: partner_2, name: 'AWS India' },
+  { img: partner_3, name: 'Trio Devs' },
+  { img: partner_1, name: 'GDSC Sai Ram Engineering College' },
+  { img: partner_6, name: 'Flutter Chennai' },
+  { img: partner_5, name: 'Chennai Geeks' },
+  { img: partner_7, name: 'Chennai React' },
+  { img: partner_8, name: 'Computer Society of Anna University' },
+];
+
+const TeamImages = [
+  { img: team_1, name: 'GDSC Rajalakshmi Engineering College' },
+  { img: team_2, name: 'AWS India' },
+  { img: team_3, name: 'Trio Devs' },
+  { img: team_4, name: 'GDSC Sai Ram Engineering College' },
+  { img: team_5, name: 'Chennai Geeks' },
+  { img: team_6, name: 'Flutter Chennai' },
+  { img: team_8, name: 'Chennai React' },
+  { img: team_7, name: 'Chennai React' },
+];
 
 const Home = ({ isAuth }) => {
-
   const partnersDivRef = useRef(null);
   const teamsDivRef = useRef(null);
-
-  const TeamImages = [
-    example, example, example, example, example, example, example
-  ];
 
   const scrollLeft = () => {
     if (partnersDivRef.current) {
@@ -40,6 +64,7 @@ const Home = ({ isAuth }) => {
       });
     }
   };
+
   const teamScrollLeft = () => {
     if (teamsDivRef.current) {
       teamsDivRef.current.scrollBy({
@@ -93,23 +118,6 @@ const Home = ({ isAuth }) => {
         <p> <FontAwesomeIcon icon={faArrowRight} /> Students getting selected and participating are generally hired by the top companies as the competition is high.</p>
       </section>
 
-      <section className="what-soc">
-        <h1>Who is Code Sapiens?</h1>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> Code Sapiens is a student run community of <span className="green">1100+ students</span> in and around Tamil Nadu.</p>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> We conduct technical events, sessions with industry experts and hackathons.</p>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> Founded by <span className="green">Thiyaga B (Senior Engineer at Walmart Global Tech)</span></p>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> Now run by a 10 member student team from across various colleges in Tamil Nadu.</p>
-      </section>
-
-      <section className="what-soc">
-        <h1>What is CSSOC?</h1>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> In our latest effort to empower the student community in Tamil Nadu, we are hosting a beginner friendly summer of code with cash prize and other benefits.</p>
-        <p> <FontAwesomeIcon icon={faArrowRight} /> Students can learn from our beginner friendly sessions and will benefit from networking with fellow peers.</p>
-        <p className="quote">
-          A <span className="green">not for profit</span> initiative <span className="green">by</span> the students <span className="green">for</span> the students.<br /> To put it simply, CSSOC is an event where a senior helps junior but just done at a different larger scale that is loved by students and wanted by companies
-        </p>
-      </section>
-
       <section className="partners">
         <h1>Our Partners</h1>
         <div className="partners-container">
@@ -117,67 +125,29 @@ const Home = ({ isAuth }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
           <div className="partners-div" ref={partnersDivRef}>
-              <div className="partner-slide">
+            {partners.map((partner, index) => (
+              <div key={index} className="partner-slide">
                 <div className="partner-img">
-                  <img src={partner_1} alt={`Partner 1`} />
+                  <img src={partner.img} alt={partner.name} />
                 </div>
                 <div className="partner-name">
-                GDSC<br/> Rajalakshmi Engineering College
+                  {partner.name}
                 </div>
               </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_2} alt={`AWS India`} />
-                </div>
-                <div className="partner-name">
-                AWS India
-                </div>
-              </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_3} alt={`Trio Devs`} />
-                </div>
-                <div className="partner-name">
-                Trio Devs
-                </div>
-              </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_1} alt={`GDSC- Sai Ram Engineering College`} />
-                </div>
-                <div className="partner-name">
-                GDSC<br/> Sai Ram Engineering College
-                </div>
-              </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_6} alt={`Flutter Chennai`} />
-                </div>
-                <div className="partner-name">
-                Flutter Chennai
-                </div>
-              </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_5} alt={`Chennai Geeks`} />
-                </div>
-                <div className="partner-name">
-                Chennai Geeks
-                </div>
-              </div>
-              <div className="partner-slide">
-                <div className="partner-img">
-                  <img src={partner_7} alt={`Chennai React`} />
-                </div>
-                <div className="partner-name">
-                Chennai React
-                </div>
-              </div>
+            ))}
           </div>
           <div className="partner-right" onClick={scrollRight}>
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
+      </section>
+
+      <section className="what-soc">
+        <h1>Who is Code Sapiens?</h1>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> Code Sapiens is a student run community of <span className="green">1100+ students</span> in and around Tamil Nadu.</p>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> We conduct technical events, sessions with industry experts and hackathons.</p>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> Founded by <span className="green">Thiyaga B (Senior Engineer at Walmart Global Tech)</span></p>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> Now run by a 10 member student team from across various colleges in Tamil Nadu.</p>
       </section>
 
       <section className="our-team">
@@ -187,13 +157,13 @@ const Home = ({ isAuth }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
           <div className="partners-div" ref={teamsDivRef}>
-            {TeamImages.map((team, index) => (
+          {TeamImages.map((team, index) => (
               <div key={index} className="partner-slide">
                 <div className="partner-img">
-                  <img src={team} alt={`Partner ${index + 1}`} />
+                  <img src={team.img} alt={team.name} />
                 </div>
                 <div className="partner-name">
-                  Partner {index + 1}
+                  {team.name}
                 </div>
               </div>
             ))}
@@ -204,8 +174,16 @@ const Home = ({ isAuth }) => {
         </div>
       </section>
 
+      <section className="what-soc">
+        <h1>What is CSSOC?</h1>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> In our latest effort to empower the student community in Tamil Nadu, we are hosting a beginner friendly summer of code with cash prize and other benefits.</p>
+        <p> <FontAwesomeIcon icon={faArrowRight} /> Students can learn from our beginner friendly sessions and will benefit from networking with fellow peers.</p>
+        <p className="quote">
+          A <span className="green">not for profit</span> initiative <span className="green">by</span> the students <span className="green">for</span> the students.<br /> To put it simply, CSSOC is an event where a senior helps junior but just done at a different larger scale that is loved by students and wanted by companies
+        </p>
+      </section>
     </div>
   )
 }
 
-export default Home
+export default Home;
