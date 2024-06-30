@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ComputersCanvas from '../components/canvas/Computers'
+import GithubLogin from '../components/GithubLogin'
 
 const Home = ({ isAuth }) => {
   return (
     <div className='home'>
-
+      <GithubLogin />
       <div className="title">
         <p>CodeSapiens Summer Of Code</p>
       </div>

@@ -1,4 +1,4 @@
-import { faTimes, faHome, faCodePullRequest, faTrophy, faChartPie, faContactCard } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faHome, faCodePullRequest, faTrophy, faChartPie, faContactCard, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -26,7 +26,7 @@ const Sidebar = ({ isAside, setIsAside }) => {
                         <li onClick={handleAside}><NavLink to='/profile/Jane'><FontAwesomeIcon icon={faCodePullRequest} />&nbsp;My Pull Requests</NavLink></li>
                     </>
                     :
-                    <li onClick={handleAside}><NavLink to='/dashboard'><FontAwesomeIcon icon={faChartPie} />&nbsp;Dashboard</NavLink></li>
+                    <li onClick={handleAside}><NavLink to='/login'><FontAwesomeIcon icon={faUser} />&nbsp;Login</NavLink></li>
                 }
                 <li onClick={handleAside}><NavLink to='/contact-us'><FontAwesomeIcon icon={faContactCard} />&nbsp;Contact us</NavLink></li>
             </ul>
