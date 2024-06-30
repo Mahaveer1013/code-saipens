@@ -15,7 +15,7 @@ import partner_8 from '../images/partner_8.jpg';
 import team_1 from '../images/team_1.png'
 import team_2 from '../images/team_2.jpg'
 import team_3 from '../images/team_3.jpg'
-import team_4 from '../images/team_4.jpg'
+import team_4 from '../images/team_4.png'
 import team_5 from '../images/team_5.png'
 import team_6 from '../images/team_6.jpg'
 import team_7 from '../images/team_7.jpg'
