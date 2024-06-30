@@ -178,7 +178,7 @@
 }
 
 .partners-div::-webkit-scrollbar{
-    /* width: 0px; */
+    width: 0px;
 }
 
 .partner-slide{
@@ -316,5 +316,8 @@
     .partner-slide{
         min-width: 200px;
         width: 200px;
+    }
+    .partners-div::-webkit-scrollbar{
+        width: auto;
     }
 }
