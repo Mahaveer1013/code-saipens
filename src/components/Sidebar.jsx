@@ -31,7 +31,7 @@ const Sidebar = ({ isAside, setIsAside }) => {
                     :
                     <>
                         <li onClick={handleAside}><NavLink to='/contact-us'><FontAwesomeIcon icon={faContactCard} />&nbsp;Contact us</NavLink></li>
-                        <li onClick={handleAside}><NavLink to='/login' className='login-side-bar'><FontAwesomeIcon icon={faGithub} />&nbsp;<GithubLogin /></NavLink></li>
+                        <li onClick={handleAside} className='login-side-bar'><FontAwesomeIcon icon={faGithub} />&nbsp;<GithubLogin /></li>
                     </>
                 }
             </ul>
