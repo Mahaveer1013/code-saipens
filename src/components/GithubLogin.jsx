@@ -6,14 +6,14 @@ const GithubLogin = () => {
     const onSuccess = async (response) => {
         try {
 
-            const { data } = await axios.post('http://localhost:5000/auth/github/callback', {
+            const { data } = await axios.post('https://vtqv4s38-8000.inc1.devtunnels.ms/github/callback', {
                 code: response.code,
             });
             
             console.log('Authenticated user:', data);
         } catch (error) {
             console.error('Error during authentication:', error);
-            // Handle error scenario
+            
         }
     };
 
@@ -23,14 +23,13 @@ const GithubLogin = () => {
     };
 
     return (
-        <div>
-            <h2>Login with GitHub</h2>
+        <>
             <LoginGitHub
                 clientId="Ov23liUaH6DXYpQeOviF"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
             />
-        </div>
+        </>
     );
 }
 

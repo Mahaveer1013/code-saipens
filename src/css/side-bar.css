@@ -64,6 +64,16 @@ aside .nav li a.active{
     color: rgb(12, 220, 12);
 }
 
+.login-side-bar button{
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+    font-size: 16px;
+    color: white;
+}
+
 @media all and (max-width:768px) {
     aside{
         display: flex;

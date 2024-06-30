@@ -16,10 +16,10 @@ import Dashboard from './Dashboard';
 import Sidebar from '../components/Sidebar';
 import StarsCanvas from '../components/Stars';
 import Particle from '../components/Particle';
-// import axios from 'axios';
+import axios from 'axios';
 import RequireAuth from '../assets/RequireAuth';
-import { prData } from '../datas/PrData';
-import { repoData } from '../datas/repoData'
+// import { prData } from '../datas/PrData';
+// import { repoData } from '../datas/repoData'
 
 export const MyContext = createContext()
 
@@ -28,26 +28,26 @@ const Main = () => {
   const [isAside, setIsAside] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
-  // const [repoData, setRepoData] = useState([...repoData]);
-  // const [prData, setPrData] = useState([...prData]);
+  const [repoData, setRepoData] = useState([]);
+  const [prData, setPrData] = useState([]);
 
-  // const fetchPullRequests = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const response = await axios.get('https://omanhosting.online/github/pullrequests');
-  //     const repoResponse = await axios.get('https://omanhosting.online/github/repositories');
-  //     setRepoData(repoResponse.data);
-  //     setPrData(response.data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.error("Failed to fetch pull requests:", error);
-  //     setIsLoading(false);
-  //   }
-  // };
+  const fetchPullRequests = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get('https://omanhosting.online/github/pullrequests');
+      const repoResponse = await axios.get('https://omanhosting.online/github/repositories');
+      setRepoData(repoResponse.data);
+      setPrData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch pull requests:", error);
+      setIsLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchPullRequests();
-  // }, []);
+  useEffect(() => {
+    fetchPullRequests();
+  }, []);
 
 
   function ScrollToTop() {
@@ -60,12 +60,12 @@ const Main = () => {
     return null;
   }
 
-  const value = {
-    repoData, prData, isLoading, setIsLoading, isAuth, setIsAuth
-  }
   // const value = {
-  //   repoData, setRepoData, prData, setPrData, isLoading, setIsLoading, isAuth, setIsAuth
+  //   repoData, prData, isLoading, setIsLoading, isAuth, setIsAuth
   // }
+  const value = {
+    repoData, setRepoData, prData, setPrData, isLoading, setIsLoading, isAuth, setIsAuth
+  }
 
   return (
     <HashRouter>

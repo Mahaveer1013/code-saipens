@@ -54,12 +54,16 @@
     gap: 10px;
 }
 
-.hero .links a {
-    color: white;
-    background-color: var(--l-bg);
+.hero .links .login-home {
+    background-color: rgb(210, 210, 210);
     padding: 10px 25px;
     border-radius: 10px;
     font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
+.hero .links div button{
+    color: rgb(0, 0, 0);
 }
 
 .hero .links a:first-child {
@@ -131,6 +135,83 @@
     background-color: aliceblue;
 }
 
+.login-home button{
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.login-home{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.partners-container{
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.partners-div{
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    padding: 0 30px;
+    overflow-x: auto;
+}
+
+.partners-div::-webkit-scrollbar{
+    width: 0;
+}
+
+.partner-slide{
+    min-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.partner-slide img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.partner-slide .partner-name{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.partner-left, .partner-right{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--l-bg);
+}
+
+.partner-left{
+    left: -30px;
+}
+
+.partner-right{
+    right: -30px;
+}
 
 @media all and (max-width:768px) {
     .home .title p {
@@ -155,6 +236,10 @@
     .hero .left p {
         text-align: center;
     }
+    section.partners{
+        padding: 0;
+        margin: 30px;
+    }
 }
 
 @media all and (max-width:426px) {
@@ -167,10 +252,6 @@
         gap: 0;
         padding-left: 0;
     }
-
-    /* .hero .right {
-        display: none;
-    } */
 
     .home .hero {
         padding: 0 10px;
@@ -206,5 +287,22 @@
 
     .home .what-soc .quote {
         width: 90%;
+    }
+
+    .partner-left, .partner-right{
+        width: 30px;
+        height: 30px;
+    }
+    .partner-left{
+        left: -15px;
+    }
+    
+    .partner-right{
+        right: -15px;
+    }
+
+    .partner-slide{
+        min-width: 200px;
+        width: 200px;
     }
 }
