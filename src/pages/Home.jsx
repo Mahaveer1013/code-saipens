@@ -3,7 +3,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ComputersCanvas from '../components/canvas/Computers';
+import ComputersCanvas from '../assets/canvas/Computers';
 import GithubLogin from '../components/GithubLogin';
 import partner_1 from '../images/partner_1.png';
 import partner_2 from '../images/partner_2.png';
